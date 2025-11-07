@@ -1,866 +1,174 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>شركة استقدام - أفضل خدمات استقدام العمالة في السعودية</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;900&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#0A2351",
-              accent: "#D4AF37",
-              "background-light": "#F8F9FA",
-              "background-dark": "#101622",
-              "text-light": "#343A40",
-              "text-dark": "#F8F9FA",
-            },
-            fontFamily: {
-              display: ["Cairo", "sans-serif"],
-            },
-            borderRadius: {
-              DEFAULT: "0.5rem",
-              lg: "0.75rem",
-              xl: "1rem",
-              full: "9999px",
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      .group:hover .group-hover-block {
-        display: flex;
-      }
-      body {
-        text-align: right;
-      }
-    </style>
-  </head>
-  <body
-    class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark"
-  >
-    <div class="relative w-full flex flex-col">
-      <header
-        class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800"
-      >
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center justify-between h-16">
-            <div class="flex items-center gap-4">
-              <div class="size-8 text-primary dark:text-accent">
-                <svg
-                  fill="none"
-                  viewBox="0 0 48 48"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z"
-                    fill="currentColor"
-                  ></path>
-                  <path
-                    clip-rule="evenodd"
-                    d="M39.998 12.236C39.9944 12.2537 39.9875 12.2845 39.9748 12.3294C39.9436 12.4399 39.8949 12.5741 39.8346 12.7175C39.8168 12.7597 39.7989 12.8007 39.7813 12.8398C38.5103 13.7113 35.9788 14.9393 33.7095 15.4811C30.9875 16.131 27.6413 16.5217 24 16.5217C20.3587 16.5217 17.0125 16.131 14.2905 15.4811C12.0012 14.9346 9.44505 13.6897 8.18538 12.8168C8.17384 12.7925 8.16216 12.767 8.15052 12.7408C8.09919 12.6249 8.05721 12.5114 8.02977 12.411C8.00356 12.3152 8.00039 12.2667 8.00004 12.2612C8.00004 12.261 8 12.2607 8.00004 12.2612C8.00004 12.2359 8.0104 11.9233 8.68485 11.3686C9.34546 10.8254 10.4222 10.2469 11.9291 9.72276C14.9242 8.68098 19.1919 8 24 8C28.8081 8 33.0758 8.68098 36.0709 9.72276C37.5778 10.2469 38.6545 10.8254 39.3151 11.3686C39.9006 11.8501 39.9857 12.1489 39.998 12.236ZM4.95178 15.2312L21.4543 41.6973C22.6288 43.5809 25.3712 43.5809 26.5457 41.6973L43.0534 15.223C43.0709 15.1948 43.0878 15.1662 43.104 15.1371L41.3563 14.1648C43.104 15.1371 43.1038 15.1374 43.104 15.1371L43.1051 15.135L43.1065 15.1325L43.1101 15.1261L43.1199 15.1082C43.1276 15.094 43.1377 15.0754 43.1497 15.0527C43.1738 15.0075 43.2062 14.9455 43.244 14.8701C43.319 14.7208 43.4196 14.511 43.5217 14.2683C43.6901 13.8679 44 13.0689 44 12.2609C44 10.5573 43.003 9.22254 41.8558 8.2791C40.6947 7.32427 39.1354 6.55361 37.385 5.94477C33.8654 4.72057 29.133 4 24 4C18.867 4 14.1346 4.72057 10.615 5.94478C8.86463 6.55361 7.30529 7.32428 6.14419 8.27911C4.99695 9.22255 3.99999 10.5573 3.99999 12.2609C3.99999 13.1275 4.29264 13.9078 4.49321 14.3607C4.60375 14.6102 4.71348 14.8196 4.79687 14.9689C4.83898 15.0444 4.87547 15.1065 4.9035 15.1529C4.91754 15.1762 4.92954 15.1957 4.93916 15.2111L4.94662 15.223L4.95178 15.2312ZM35.9868 18.996L24 38.22L12.0131 18.996C12.4661 19.1391 12.9179 19.2658 13.3617 19.3718C16.4281 20.1039 20.0901 20.5217 24 20.5217C27.9099 20.5217 31.5719 20.1039 34.6383 19.3718C35.082 19.2658 35.5339 19.1391 35.9868 18.996Z"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                  ></path>
-                </svg>
-              </div>
-              <h2 class="text-xl font-bold text-primary dark:text-white">
-                شعار الشركة
-              </h2>
-            </div>
-            <div class="hidden md:flex items-center gap-8">
-              <a
-                class="text-sm font-medium hover:text-primary dark:hover:text-accent"
-                href="#"
-                >الرئيسية</a
-              >
-              <a
-                class="text-sm font-medium hover:text-primary dark:hover:text-accent"
-                href="#about"
-                >من نحن</a
-              >
-              <a
-                class="text-sm font-medium hover:text-primary dark:hover:text-accent"
-                href="#services"
-                >خدماتنا</a
-              >
-              <a
-                class="text-sm font-medium hover:text-primary dark:hover:text-accent"
-                href="#contact"
-                >تواصل معنا</a
-              >
-            </div>
-            <a
-              href="https://wa.me/966596078209"
-              target="_blank"
-              class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-accent text-primary text-sm font-bold shadow-md hover:bg-accent/90 transition-colors"
-            >
-              <span class="truncate">اطلب استقدام الآن</span>
-            </a>
-            <div class="md:hidden">
-              <button
-                class="p-2 rounded-md text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700"
-              >
-                <span class="material-symbols-outlined">menu</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-      <main class="flex-grow">
-        <section class="relative">
-          <div
-            class="absolute inset-0 bg-cover bg-center"
-            data-alt="A smiling female worker in a professional office setting"
-            style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbrQIa_9imkgVHkMNVA50nc5fuTnD1oYcSovVB6QGJ_L2VN9DSmXsJo5qN7PtG-rZbTqKMhVI7PEbpqUxf3jmPWSh0ZURa1OowbrBJX3tTFzEPknPKSk500S2JYwRuOji5Ex0qSQKN_j-YkBp2MDvlwDUXcPQt9nySxmQN6fC-QsdpqJKRj99ZdtiYgT7sQw_J8d7TPNIlOKCyxFfL4Ycpxei6-leltIxGOaisMOwgRObsgJpxWRI1W3PzhhwUcBPbDCxaVBlnF0c');
-            "
-          ></div>
-          <div
-            class="absolute inset-0 bg-background-light/80 dark:bg-background-dark/70"
-          ></div>
-          <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div
-              class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center text-center py-20"
-            >
-              <div class="flex flex-col gap-6 max-w-3xl">
-                <h1
-                  class="text-primary dark:text-white text-4xl md:text-6xl font-black leading-tight tracking-tighter"
-                >
-                  أفضل خدمات استقدام العمالة في السعودية – نضمن الجودة
-                  والموثوقية
-                </h1>
-                <h2
-                  class="text-text-light dark:text-text-dark/80 text-lg md:text-xl font-normal leading-normal"
-                >
-                  حلول استقدام العمالة بكفاءة وسرعة وموثوقية
-                </h2>
-                <div class="mt-4">
-                  <a
-                    href="https://wa.me/966596078209"
-                    target="_blank"
-                    class="min-w-[84px] py-3 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-accent text-primary text-base font-bold shadow-lg hover:bg-accent/90 transition-transform hover:scale-105"
-                  >
-                    <span class="truncate">اطلب استقدام الآن</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section
-          id="about"
-          class="py-16 sm:py-24 bg-background-light dark:bg-background-dark"
-        >
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div class="text-center lg:text-right">
-                <h2
-                  class="text-primary dark:text-white text-3xl font-bold tracking-tight"
-                >
-                  من نحن
-                </h2>
-                <p class="mt-4 text-lg text-text-light dark:text-text-dark/80">
-                  نحن شركة سعودية متخصصة في استقدام العمالة المنزلية والمهنية من
-                  مختلف الدول. بفضل شراكاتنا الدولية وفريقنا المتخصص، نضمن لك
-                  أفضل الكفاءات بأسهل وأسرع الطرق.
-                </p>
-              </div>
-              <div class="flex flex-wrap gap-4 justify-center">
-                <div
-                  class="flex min-w-[180px] flex-1 flex-col gap-2 rounded-lg p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/20 text-center"
-                >
-                  <p class="text-primary dark:text-accent text-4xl font-bold">
-                    +500
-                  </p>
-                  <p class="text-base font-medium">عميل سعيد</p>
-                </div>
-                <div
-                  class="flex min-w-[180px] flex-1 flex-col gap-2 rounded-lg p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/20 text-center"
-                >
-                  <p class="text-primary dark:text-accent text-4xl font-bold">
-                    +8
-                  </p>
-                  <p class="text-base font-medium">دول</p>
-                </div>
-                <div
-                  class="flex min-w-[180px] flex-1 flex-col gap-2 rounded-lg p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/20 text-center"
-                >
-                  <p class="text-primary dark:text-accent text-4xl font-bold">
-                    +10
-                  </p>
-                  <p class="text-base font-medium">سنوات خبرة</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="py-16 sm:py-24 bg-white dark:bg-background-dark/50">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2
-              class="text-primary dark:text-white text-3xl font-bold tracking-tight"
-            >
-              لماذا تختارنا؟
-            </h2>
-            <p
-              class="mt-4 max-w-2xl mx-auto text-lg text-text-light dark:text-text-dark/80"
-            >
-              التزامنا بالتميز هو ما يميزنا. نقدم خدمة وقيمة لا مثيل لها
-              لعملائنا.
-            </p>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div
-                class="flex flex-col items-center gap-4 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm"
-              >
-                <div class="bg-accent/10 p-4 rounded-full">
-                  <span class="material-symbols-outlined text-4xl text-accent"
-                    >verified_user</span
-                  >
-                </div>
-                <h3 class="text-xl font-bold text-primary dark:text-white">
-                  موثوقية كاملة
-                </h3>
-                <p class="text-text-light dark:text-text-dark/80">
-                  نقوم بفحص كل مرشح بدقة لضمان تلبيتهم لمعاييرنا العالية من
-                  المهارة والنزاهة.
-                </p>
-              </div>
-              <div
-                class="flex flex-col items-center gap-4 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm"
-              >
-                <div class="bg-accent/10 p-4 rounded-full">
-                  <span class="material-symbols-outlined text-4xl text-accent"
-                    >handshake</span
-                  >
-                </div>
-                <h3 class="text-xl font-bold text-primary dark:text-white">
-                  تجربة سلسة
-                </h3>
-                <p class="text-text-light dark:text-text-dark/80">
-                  عمليتنا المبسطة تجعل التوظيف سريعًا وسهلاً وخاليًا تمامًا من
-                  المتاعب بالنسبة لك.
-                </p>
-              </div>
-              <div
-                class="flex flex-col items-center gap-4 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm"
-              >
-                <div class="bg-accent/10 p-4 rounded-full">
-                  <span class="material-symbols-outlined text-4xl text-accent"
-                    >payments</span
-                  >
-                </div>
-                <h3 class="text-xl font-bold text-primary dark:text-white">
-                  أسعار تنافسية
-                </h3>
-                <p class="text-text-light dark:text-text-dark/80">
-                  نقدم خدمات استقدام متميزة بأسعار عادلة وشفافة، مما يضمن قيمة
-                  رائعة.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section
-          id="services"
-          class="py-16 sm:py-24 bg-gradient-to-br from-primary to-[#061A40] text-white"
-        >
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold tracking-tight">
-              فوائد استقدام العمالة المساعدة
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-white/80">
-              اكتشف مزايا الشراكة معنا لتلبية احتياجات التوظيف الخاصة بك.
-            </p>
-            <div
-              class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-            >
-              <div
-                class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
-              >
-                <span class="material-symbols-outlined text-5xl text-accent"
-                  >schedule</span
-                >
-                <h3 class="mt-4 text-xl font-bold">توفير الوقت والجهد</h3>
-              </div>
-              <div
-                class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
-              >
-                <span class="material-symbols-outlined text-5xl text-accent"
-                  >health_and_safety</span
-                >
-                <h3 class="mt-4 text-xl font-bold">راحة البال</h3>
-              </div>
-              <div
-                class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
-              >
-                <span class="material-symbols-outlined text-5xl text-accent"
-                  >cottage</span
-                >
-                <h3 class="mt-4 text-xl font-bold">دعم الأعمال المنزلية</h3>
-              </div>
-              <div
-                class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
-              >
-                <span class="material-symbols-outlined text-5xl text-accent"
-                  >trending_up</span
-                >
-                <h3 class="mt-4 text-xl font-bold">تحسين الإنتاجية في العمل</h3>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section
-          class="py-16 sm:py-24 bg-background-light dark:bg-background-dark"
-        >
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2
-              class="text-primary dark:text-white text-3xl font-bold tracking-tight"
-            >
-              اختر الدولة التي ترغب بالاستقدام منها
-            </h2>
-            <p
-              class="mt-4 max-w-2xl mx-auto text-lg text-text-light dark:text-text-dark/80"
-            >
-              نستقدم العمالة المؤهلة والموثوقة من مجموعة متنوعة من البلدان
-              لتلبية احتياجاتك الخاصة.
-            </p>
-            <div
-              class="mt-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6"
-            >
-              <div class="group relative overflow-hidden rounded-lg shadow-md">
-                <img
-                  class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Ethiopia"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDdJ0662FElKTgEk1KXYne7HoM1BwNVbu9ahV54OVjcNlkcNd0W8ABd852lkS1ZQ3LT1Tfj8IAEcXYSHeq78a3eDWmFlK3Kj3GPKU2uR5tn0HFDhH8QSMZqWm0q9cS4CMtiEdMxGYzefvgCHrXQOMlSBKO5qyUKGMCmTe5AEit7GGEXI_4fJtkLLQmep51vdq7h7hPudeUMoUOnWkbn5RWBrsWf53xRSUzXeqz-NHCOKVUYLnQWlUlSLlJoCSGnMkC41ifQp0rN1s"
-                />
-                <div
-                  class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
-                >
-                  <h3 class="text-white text-lg font-bold">إثيوبيا</h3>
-                </div>
-                <div
-                  class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
-                >
-                  <button
-                    class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
-                  >
-                    ابدأ الآن
-                  </button>
-                </div>
-              </div>
-              <div class="group relative overflow-hidden rounded-lg shadow-md">
-                <img
-                  class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of India"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzvYjFT1gvKjm00yNDZJLej3sV-Mm6gYpb2VPvvbSJOMzcE1u2LdLSJ4V7nz6NesSUvsQP3hDL4S8OrNPDmHK4UrA835NUDtfac1zMvYfP9V_xC-JrjJ6uLuy17Rq4CKxJ-WeYijRzsToOXDW0TI2ySqElrvyTIHNqcaFk6XNA0ssGn-UiWF3V4ShQhLECu2t8U5uGqlzoTSavqMYCsntvnuf2R_JKiGPAy4kvyeNJecZ_bUOHU8JG3CTMRH4pV_fyPebUpXmj53U"
-                />
-                <div
-                  class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
-                >
-                  <h3 class="text-white text-lg font-bold">الهند</h3>
-                </div>
-                <div
-                  class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
-                >
-                  <button
-                    class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
-                  >
-                    ابدأ الآن
-                  </button>
-                </div>
-              </div>
-              <div class="group relative overflow-hidden rounded-lg shadow-md">
-                <img
-                  class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Indonesia"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxjtM_Dma6Mwm7E5bPfR81WxT6jlZNxt2ET9FOpF3g2W6Q7s7NFu3ylOFUwXyg9EtWBMISZ1wUR3EmYLTet8-7xLP0MHjFduqN7kl7SnVydXsPdTkPbCimJ7n0RgvX-iTKANiKqSeDTmFCKA_K0gToUzppjlNshtzlOG_E1EEOJmjWMY3yOornIX9bx0Xaf5YDDCkh5Nc322WAtFNN_mRZmOaP-Ac_yCEfbyVyXtdyd3AQ1jciIYkucVnnjtTe-R9vRy0aC3nK1S4"
-                />
-                <div
-                  class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
-                >
-                  <h3 class="text-white text-lg font-bold">إندونيسيا</h3>
-                </div>
-                <div
-                  class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
-                >
-                  <button
-                    class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
-                  >
-                    ابدأ الآن
-                  </button>
-                </div>
-              </div>
-              <div class="group relative overflow-hidden rounded-lg shadow-md">
-                <img
-                  class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Philippines"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkn9lXErrdpPLX0PXyRk33vSPoqC67WQDL-Qr4qNoI7FVA7ZCur4yYVuTd6MKwKUAZN5makQm2KCBvuYZvpDh66XcQxW2g-F6Zvzjxy8NRUTygxBuNSZJBIOG8uWmiwgA_9biOKRQkkPrD35n7LO0PJtYiEmwFqGsJLYTNDioAN4B2bYEsFnjqmfWrIY8trU7ylGubcEfzI0zZ4EpoMGb9b9T8ekRCBAb-wQxFhEvhuOwYNmWE3xo49f6LrQMRL5V71EBWxGJwTIM"
-                />
-                <div
-                  class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
-                >
-                  <h3 class="text-white text-lg font-bold">الفلبين</h3>
-                </div>
-                <div
-                  class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
-                >
-                  <button
-                    class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
-                  >
-                    ابدأ الآن
-                  </button>
-                </div>
-              </div>
-              <div class="group relative overflow-hidden rounded-lg shadow-md">
-                <img
-                  class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Uganda"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVkQ1kqQUiQ7VoyzqGOLvkwFk7V_SWJ-9f42ywzMn0PYYvshhx6QHbPxczpiQRIddgT7bCbjuA8jNxWThV0kF6i0jRgBOauIXwAWwpwO4RzrBTizTnKWs-2U3N3GqjB1j367HGP6zhFZEQLyv_n8MFQ4-urAmxV34PHfFi5BuVJPF_mcUdZisgUAeY__5bFRvkTATw28ZcFUP6zg7M2Ci8G_50NYbkCj2cIjFLK7K7l4PVBO0uD-5UR3X2obv3dR3-LnfKcFR2CEM"
-                />
-                <div
-                  class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
-                >
-                  <h3 class="text-white text-lg font-bold">أوغندا</h3>
-                </div>
-                <div
-                  class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
-                >
-                  <button
-                    class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
-                  >
-                    ابدأ الآن
-                  </button>
-                </div>
-              </div>
-              <div class="group relative overflow-hidden rounded-lg shadow-md">
-                <img
-                  class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Bangladesh"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdCr7oEoMJjUreBEp9aH6Pz78HEC4StZt0daj-m492GHnUpPIaMYY9h3JZ4BMoNk_BE9zipFU0ErcZ5WUWYw3EFwa5eUYa_0dFcSTgNpJRFRGvLf9P-gW8chHuAap0TyZEKKCmnRNggLNwS57k4JzuIW9LW0AINnbzI2mNV86GNXpku3lznmmMAeAearof29MufbC-gDwk-sEOvbMX-L0I80Qz-p4iKo9T4Zxk3H7WBQ1R-_hiblfr7KYoyR5LET3jG6a26OcRnrM"
-                />
-                <div
-                  class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
-                >
-                  <h3 class="text-white text-lg font-bold">بنغلاديش</h3>
-                </div>
-                <div
-                  class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
-                >
-                  <button
-                    class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
-                  >
-                    ابدأ الآن
-                  </button>
-                </div>
-              </div>
-              <div class="group relative overflow-hidden rounded-lg shadow-md">
-                <img
-                  class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Kenya"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJpbpbWuzh-neMMSYeOgp16TDqeR1wqWjok8Lq0tNaZSTCmkeG3QY4-VQkzSAdw7qrP-GhHTQBGFtV8F9BXW-VIJXF8vXtiN-uFu7jokLkL32iYYvSOkKAjlykXw4eTcQO3bYgWCGkp00kSLsSah7-Wx4de8cel824n940sZXsJqGAYcV0XirUtKTeGQT0RSW9OuiseRm40SR7ReVAsI2AK40VGhPNxZW1yEnwj_lU-EmKbiyL8r4hjzTTh4b8Nne-TO6BUXHaiec"
-                />
-                <div
-                  class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
-                >
-                  <h3 class="text-white text-lg font-bold">كينيا</h3>
-                </div>
-                <div
-                  class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
-                >
-                  <button
-                    class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
-                  >
-                    ابدأ الآن
-                  </button>
-                </div>
-              </div>
-              <div class="group relative overflow-hidden rounded-lg shadow-md">
-                <img
-                  class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Sri Lanka"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtGHFYcZVVCYyzWhvC42bBFIMUGFTGDpEwHF7YnvKM8vHVwVC2bSc2htDhpGMIgx8vYnNTFIrM5sKkyrUNKHejTl70OsSXH_PDAOcpgVhMXz53us_vtPrYEWO25dacHnaljBOkCPHCi7jq7vGD6X3tRyhhVtftu78Sb09mHZayyI8JVwh9Mk1A4TYQbj8Dh-M-S8YJmhmfTu-_Wy5TbkDIRkikSTqmzLQAIgk7Z-5a0Gry3LYj1hp3GTJVJmY_kzASHwfPFGP83AE"
-                />
-                <div
-                  class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
-                >
-                  <h3 class="text-white text-lg font-bold">سريلانكا</h3>
-                </div>
-                <div
-                  class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
-                >
-                  <button
-                    class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
-                  >
-                    ابدأ الآن
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="py-16 sm:py-24 bg-white dark:bg-background-dark/50">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2
-              class="text-primary dark:text-white text-3xl font-bold tracking-tight"
-            >
-              ماذا يقول عملاؤنا
-            </h2>
-            <div
-              class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              <div
-                class="p-8 bg-background-light dark:bg-background-dark rounded-lg shadow-sm text-right"
-              >
-                <p class="text-text-light dark:text-text-dark/80">
-                  "أفضل وكالة توظيف عملت معها. وجدوا لنا المرشح المثالي في وقت
-                  قياسي. احترافية وكفاءة عالية."
-                </p>
-                <div class="flex items-center mt-6">
-                  <img
-                    class="h-12 w-12 rounded-full"
-                    data-alt="Avatar of client Ahmed"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu5LPmlOXJqV4vsF3wndnjWvhMe4qt9StJrSNiSwVnVgYjBNMAIKa_8VW4jyFZYuFTyqQfLD7y3iiXJggEq_voqZ0j_ICvNcm5E_Xpnlbi2Ni3LcBGYdLYzpREpjZJKJhK4R1CFU-ddMSjINvb9LxD50_SPe8RNWYlWVmI-HtnCNexe3LydhYc2BsZ5p6PmKKYbb4fbAYENwXxFtNVK7CaoEwrncSVg6E_Iwt_FtEzHxmXShOECF5ImurKlEUsOWFN4zKYdUozY-4"
-                  />
-                  <div class="mr-4">
-                    <p class="font-bold text-primary dark:text-white">
-                      أحمد الفارسي
-                    </p>
-                    <p class="text-sm text-gray-500">الرياض</p>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="p-8 bg-background-light dark:bg-background-dark rounded-lg shadow-sm text-right"
-              >
-                <p class="text-text-light dark:text-text-dark/80">
-                  "عمليتهم سلسة وشفافة للغاية. كان الفريق داعمًا طوال الوقت، مما
-                  جعل المهمة التي يمكن أن تكون مرهقة بسيطة جدًا."
-                </p>
-                <div class="flex items-center mt-6">
-                  <img
-                    class="h-12 w-12 rounded-full"
-                    data-alt="Avatar of client Fatima"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUWJx14pfOBok6Q_BRezVts4ZoLHbWxYW-phANLBqxGehr6qjmbi-nzhJL6ydzZKKGVZm_znTzz-rJnn2mavgksr-KQefyN8fdrO-46o7tw8c_emYVgogWIhYU9jOd9Fm0RobfMKMLHCkIn8dob-EH-bfIDehk-BOYexTatvNZ44NDGwHll94ScHNoeuaMoquySId9NnUwYjEqOjddSmp9nsFY9I8atxOhj1LChqWpUcXq5LtpeZt1QeNMxSM0msgtufu-pIoFVYA"
-                  />
-                  <div class="mr-4">
-                    <p class="font-bold text-primary dark:text-white">
-                      فاطمة خان
-                    </p>
-                    <p class="text-sm text-gray-500">جدة</p>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="p-8 bg-background-light dark:bg-background-dark rounded-lg shadow-sm text-right"
-              >
-                <p class="text-text-light dark:text-text-dark/80">
-                  "موثوقون وجديرون بالثقة، ويوفون بوعودهم. أشعر براحة البال وأنا
-                  أعلم أن عمالتي المنزلية من مصدر حسن السمعة."
-                </p>
-                <div class="flex items-center mt-6">
-                  <img
-                    class="h-12 w-12 rounded-full"
-                    data-alt="Avatar of client Omar"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBABl7KpUeVpigBZ14-4c9N_ANd4FlDJDOK4lCrexafDrn4UYiHgqq0sHTdZOHmhwespkjA7kZ-9QgdwwlAkvS9HJPBIyKBDMHMKSQ_DhznWqNTUK25JXhxUnLNfTykqfkRtiIRbjQQRh1feViTR_XCzdD5SIZ9f_hAWFKOOQ4HFo-ANje6oCqbSsSdH7-8UblEp8rwgN84kBDDhSfy5S7dpSg9Y5Anwpf69HMff93BIdVMkC9kj9bl227zkyPgA79PtBq4CyhZNI"
-                  />
-                  <div class="mr-4">
-                    <p class="font-bold text-primary dark:text-white">
-                      عمر عبدالله
-                    </p>
-                    <p class="text-sm text-gray-500">الدمام</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section
-          class="py-16 sm:py-24 bg-background-light dark:bg-background-dark"
-        >
-          <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              class="text-center text-primary dark:text-white text-3xl font-bold tracking-tight"
-            >
-              الأسئلة الشائعة
-            </h2>
-            <div class="mt-12 space-y-4">
-              <details
-                class="group p-6 rounded-lg bg-white dark:bg-gray-800/20"
-                open=""
-              >
-                <summary
-                  class="flex items-center justify-between cursor-pointer"
-                >
-                  <h3 class="font-medium text-lg text-primary dark:text-white">
-                    ما هي عملية الاستقدام؟
-                  </h3>
-                  <span
-                    class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180"
-                    >expand_more</span
-                  >
-                </summary>
-                <p class="mt-4 text-text-light dark:text-text-dark/80">
-                  تتضمن عمليتنا استشارة أولية، والبحث عن المرشحين وفحصهم،
-                  والمقابلات، والتوظيف النهائي. نحن نتعامل مع جميع الوثائق
-                  والإجراءات القانونية لتجربة سلسة.
-                </p>
-              </details>
-              <details
-                class="group p-6 rounded-lg bg-white dark:bg-gray-800/20"
-              >
-                <summary
-                  class="flex items-center justify-between cursor-pointer"
-                >
-                  <h3 class="font-medium text-lg text-primary dark:text-white">
-                    كم من الوقت يستغرق العثور على مرشح؟
-                  </h3>
-                  <span
-                    class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180"
-                    >expand_more</span
-                  >
-                </summary>
-                <p class="mt-4 text-text-light dark:text-text-dark/80">
-                  يمكن أن يختلف الجدول الزمني اعتمادًا على المتطلبات المحددة
-                  للوظيفة وبلد المنشأ. عادة، يتراوح من 2 إلى 6 أسابيع. نعطي
-                  الأولوية للكفاءة دون المساومة على الجودة.
-                </p>
-              </details>
-              <details
-                class="group p-6 rounded-lg bg-white dark:bg-gray-800/20"
-              >
-                <summary
-                  class="flex items-center justify-between cursor-pointer"
-                >
-                  <h3 class="font-medium text-lg text-primary dark:text-white">
-                    ما هي التكاليف المترتبة؟
-                  </h3>
-                  <span
-                    class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180"
-                    >expand_more</span
-                  >
-                </summary>
-                <p class="mt-4 text-text-light dark:text-text-dark/80">
-                  نحن نقدم أسعارًا شفافة بدون رسوم خفية. تعتمد التكلفة على نوع
-                  الخدمة وجنسية المرشح. يرجى الاتصال بنا للحصول على عرض أسعار
-                  مفصل مصمم خصيصًا لاحتياجاتك.
-                </p>
-              </details>
-            </div>
-          </div>
-        </section>
-        <section
-          id="contact"
-          class="py-16 sm:py-24 bg-white dark:bg-background-dark/50"
-        >
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div class="lg:text-right text-center">
-                <h2
-                  class="text-primary dark:text-white text-3xl font-bold tracking-tight"
-                >
-                  تواصل معنا
-                </h2>
-                <p class="mt-4 text-lg text-text-light dark:text-text-dark/80">
-                  جاهز للبدء؟ اترك لنا المهمة وسنضمن لك الخدمة الأفضل.
-                </p>
-                <div class="mt-8 space-y-4">
-                  <p
-                    class="flex items-center justify-center lg:justify-start gap-3"
-                  >
-                    <span class="material-symbols-outlined text-accent"
-                      >location_on</span
-                    >
-                    الرياض، المملكة العربية السعودية
-                  </p>
-                  <p
-                    class="flex items-center justify-center lg:justify-start gap-3"
-                  >
-                    <span class="material-symbols-outlined text-accent"
-                      >call</span
-                    >
-                    6789 345 12 966+
-                  </p>
-                  <p
-                    class="flex items-center justify-center lg:justify-start gap-3"
-                  >
-                    <span class="material-symbols-outlined text-accent"
-                      >mail</span
-                    >
-                    contact@recruitmentco.sa
-                  </p>
-                </div>
-              </div>
-              <div
-                class="p-8 bg-background-light dark:bg-background-dark rounded-lg shadow-lg"
-              >
-                <form action="#" class="space-y-6" method="POST">
-                  <div>
-                    <label class="sr-only" for="name">الاسم</label>
-                    <input
-                      autocomplete="name"
-                      class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm text-right"
-                      id="name"
-                      name="name"
-                      placeholder="الاسم"
-                      type="text"
-                    />
-                  </div>
-                  <div>
-                    <label class="sr-only" for="phone">رقم الجوال</label>
-                    <input
-                      autocomplete="tel"
-                      class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm text-right"
-                      id="phone"
-                      name="phone"
-                      placeholder="رقم الجوال"
-                      type="tel"
-                    />
-                  </div>
-                  <div>
-                    <label class="sr-only" for="service"
-                      >نوع الخدمة المطلوبة</label
-                    >
-                    <select
-                      class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
-                      id="service"
-                      name="service"
-                    >
-                      <option>اختر نوع الخدمة</option>
-                      <option>عمالة منزلية</option>
-                      <option>موظفين للشركات</option>
-                      <option>عمالة ماهرة</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label class="sr-only" for="message">رسالة</label>
-                    <textarea
-                      class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm focus:border-primary focus:ring-primary sm:text-sm text-right"
-                      id="message"
-                      name="message"
-                      placeholder="رسالة"
-                      rows="4"
-                    ></textarea>
-                  </div>
-                  <div>
-                    <a
-                      href="https://wa.me/966596078209"
-                      target="_blank"
-                      class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-primary bg-accent hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
-                      type="submit"
-                    >
-                      أرسل الآن
-                    </a>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      <footer class="bg-primary dark:bg-gray-900 text-white">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-right">
-            <div>
-              <h3 class="text-lg font-bold">شركة استقدام</h3>
-              <p class="mt-2 text-sm text-white/70">
-                شريكك الموثوق لاستقدام العمالة عالية الجودة في المملكة العربية
-                السعودية.
-              </p>
-            </div>
-            <div>
-              <h3 class="text-lg font-bold">روابط سريعة</h3>
-              <ul class="mt-4 space-y-2 text-sm">
-                <li>
-                  <a class="text-white/70 hover:text-accent" href="#"
-                    >الرئيسية</a
-                  >
-                </li>
-                <li>
-                  <a class="text-white/70 hover:text-accent" href="#">من نحن</a>
-                </li>
-                <li>
-                  <a class="text-white/70 hover:text-accent" href="#"
-                    >خدماتنا</a
-                  >
-                </li>
-                <li>
-                  <a class="text-white/70 hover:text-accent" href="#"
-                    >تواصل معنا</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="text-lg font-bold">تابعنا</h3>
-              <div class="flex mt-4 space-x-4 space-x-reverse">
-                <a class="text-white/70 hover:text-accent" href="#">
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                      fill-rule="evenodd"
-                    ></path>
-                  </svg>
-                </a>
-                <a class="text-white/70 hover:text-accent" href="#">
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
-                    ></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-lg font-bold">تواصل معنا</h3>
-              <a
-                class="mt-4 inline-flex items-center gap-2 bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition-colors"
-                href="https://wa.me/966596078209"
-                target="_blank"
-              >
-                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M16.75 13.96c.25.13.41.2.46.3.06.11.04.61-.21 1.18-.2.56-1.24 1.1-1.7 1.18-.46.08-1.03.2-2.93-.53-1.9-.73-3.4-2.38-3.5-2.5-.18-.13-.35-.25-.53-.41-.35-.32-.7-.73-.96-1.13s-.41-.61-.41-1.01c0-.4.18-.68.35-.86.18-.18.38-.23.53-.23.18 0 .33.03.46.05.13.03.23.03.35.43.13.41.43 1.03.46 1.1.03.08.06.18.01.28-.05.1-.13.18-.23.28-.1.1-.2.18-.28.25-.08.08-.15.16-.08.28.08.13.41.73.91 1.21.5.48 1.05.81 1.18.91.13.1.2.05.28-.03.08-.08.16-.18.23-.25.1-.1.18-.13.28-.13.1 0 .61.23 1.01.43.41.2.73.35.83.43.1.08.18.13.18.23.01.09-.01.2-.04.28zM12 2C6.477 2 2 6.477 2 12c0 1.74.44 3.39 1.22 4.84l-1.14 4.15 4.25-1.12A9.94 9.94 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"
-                  ></path>
-                </svg>
-                واتساب
-              </a>
-            </div>
-          </div>
-          <div
-            class="mt-8 pt-8 border-t border-white/20 text-center text-sm text-white/70"
-          >
-            <p>© 2024 شركة استقدام. جميع الحقوق محفوظة.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  </body>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>راحتك للاستقدام | استقدام العمالة المنزلية والسائقين</title>
+  <meta name="description" content="مكتب راحتك للاستقدام يقدم خدمات استقدام العمالة المنزلية والسائقين بخبرة وموثوقية داخل المملكة العربية السعودية." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://mohamed780050.github.io/lawyer_ayed/" />
+  <meta name="theme-color" content="#e8f6ff" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "مكتب راحتك للاستقدام",
+    "url": "https://mohamed780050.github.io/lawyer_ayed/",
+    "logo": "https://mohamed780050.github.io/lawyer_ayed/assets/logo.png",
+    "telephone": "+966596078209",
+    "email": "info@rahatak-recruitment.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "SA",
+      "addressLocality": "المملكة العربية السعودية"
+    },
+    "description": "مكتب راحتك للاستقدام يقدم خدمات استقدام العمالة المنزلية والسائقين بخبرة وموثوقية داخل المملكة."
+  }
+  </script>
+
+  <!-- Internal Style -->
+  <style>
+    body {
+      font-family: "Cairo", sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+      color: #222;
+    }
+    header {
+      background-color: #4da3ff;
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      margin-top: 30px;
+    }
+    main h2 {
+      color: #2a7ee0;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+    .whatsapp-btn {
+      display: inline-block;
+      background-color: #2dc653;
+      color: white;
+      text-decoration: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .whatsapp-btn:hover {
+      background-color: #1da743;
+    }
+    footer {
+      background-color: #e9f3ff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #555;
+    }
+    section {
+      margin-top: 50px;
+    }
+    h3 {
+      color: #0066cc;
+    }
+    pre {
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>مكتب راحتك للاستقدام</h1>
+  </header>
+
+  <main>
+    <h2>خبرة وموثوقية في خدمات الاستقدام</h2>
+    <p>
+      مكتب <strong>راحتك للاستقدام</strong> يقدم حلولاً متكاملة لاستقدام العمالة المنزلية والسائقين بخبرة تمتد لسنوات، مع التزامنا الكامل بتقديم الخدمة بأعلى معايير الثقة والراحة لعملائنا في المملكة العربية السعودية.
+    </p>
+
+    <a
+      class="whatsapp-btn"
+      href="https://wa.me/966596078209?text=مرحبًا%20أرغب%20في%20الاستفسار%20عن%20خدمات%20الاستقدام"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      تواصل معنا عبر واتساب
+    </a>
+
+    <section id="contact">
+      <h3>معلومات التواصل</h3>
+      <p>📞 الجوال / واتساب: <strong>+966 59 607 8209</strong></p>
+      <p>
+        📧 البريد الإلكتروني:
+        <a href="mailto:info@rahatak-recruitment.com">info@rahatak-recruitment.com</a>
+      </p>
+      <p>📍 المملكة العربية السعودية</p>
+    </section>
+
+    <section id="privacy">
+      <h3>سياسة الخصوصية</h3>
+      <p>
+        نحن في مكتب راحتك للاستقدام نحترم خصوصية زوارنا ونلتزم بحماية بياناتهم الشخصية. لا نقوم بمشاركة أي معلومات مع جهات خارجية إلا حسب القوانين المحلية أو بموافقة العميل. باستخدامك لموقعنا، فإنك توافق على سياسة الخصوصية هذه.
+      </p>
+    </section>
+
+    <section id="terms">
+      <h3>الشروط والأحكام</h3>
+      <p>
+        باستخدام هذا الموقع، فإنك توافق على الالتزام بشروط الاستخدام. الخدمات المعروضة تهدف لتسهيل عملية الاستقدام داخل المملكة، ولا نتحمل مسؤولية أي استخدام مخالف للأنظمة المحلية. يحق للمكتب تعديل أو تحديث هذه الشروط في أي وقت.
+      </p>
+    </section>
+
+    <section id="extra">
+      <h3>ملفات محركات البحث</h3>
+      <p>الملفات التالية مضافة للمساعدة في تحسين ظهور الموقع في نتائج البحث:</p>
+
+      <h4>robots.txt</h4>
+      <pre> 
+User-agent: *
+Allow: /
+Sitemap: https://mohamed780050.github.io/lawyer_ayed/sitemap.xml
+      </pre>
+
+      <h4>sitemap.xml</h4>
+      <pre>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://mohamed780050.github.io/lawyer_ayed/</loc>
+    <priority>1.00</priority>
+  </url>
+</urlset>
+      </pre>
+    </section>
+  </main>
+
+  <footer>
+    جميع الحقوق محفوظة © 2025 مكتب راحتك للاستقدام
+  </footer>
+</body>
 </html>

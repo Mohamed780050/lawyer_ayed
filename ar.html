@@ -3,6 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="راحتك للاستقدام - أفضل خدمات استقدام العمالة في السعودية. نوفر عمالة منزلية موثوقة من 8+ دول. وكالة استقدام رسمية مرخصة بأكثر من 500 عميل سعيد." />
+    <meta property="og:title" content="راحتك للاستقدام - أفضل خدمات استقدام العمالة في السعودية" />
+    <meta property="og:description" content="خدمات استقدام سريعة وموثوقة. وكالة استقدام رسمية بأكثر من 500 عميل سعيد." />
+    <meta property="og:image" content="assets/logo.svg" />
+    <meta property="og:type" content="website" />
+    <link rel="alternate" hreflang="en" href="index.html" />
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
     <title>شركة استقدام - أفضل خدمات استقدام العمالة في السعودية</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -48,6 +55,9 @@
       .group:hover .group-hover-block {
         display: flex;
       }
+      section[id] {
+        scroll-margin-top: 5rem;
+      }
       body {
         text-align: right;
       }
@@ -90,15 +100,22 @@
                 >تواصل معنا</a
               >
             </div>
-            <a
-              href="https://wa.me/97470663045"
-              target="_blank"
-              class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-accent text-primary text-sm font-bold shadow-md hover:bg-accent/90 transition-colors"
-            >
-              <span class="truncate">اطلب استقدام الآن</span>
-            </a>
+            <div class="hidden md:flex items-center gap-3">
+              <a
+                href="index.html"
+                class="text-sm font-bold px-3 py-1.5 rounded-lg border-2 border-primary dark:border-white text-primary dark:text-white hover:bg-primary hover:text-white dark:hover:bg-accent dark:hover:text-primary transition-colors"
+              >EN</a>
+              <a
+                href="https://wa.me/974700663045"
+                target="_blank"
+                class="min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-accent text-primary text-sm font-bold shadow-md hover:bg-accent/90 transition-colors"
+              >
+                <span class="truncate">اطلب استقدام الآن</span>
+              </a>
+            </div>
             <div class="md:hidden">
               <button
+                id="menu-toggle"
                 class="p-2 rounded-md text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700"
               >
                 <span class="material-symbols-outlined">menu</span>
@@ -107,6 +124,33 @@
           </div>
         </div>
       </header>
+      <!-- Mobile Menu Drawer -->
+      <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+      <div id="mobile-menu" class="fixed top-0 left-0 h-full w-72 bg-background-light dark:bg-background-dark shadow-xl z-50 transform -translate-x-full transition-transform duration-300">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
+          <a href="#" class="flex items-center gap-3">
+            <img src="assets/logo.svg" alt="شعار راحتك للاستقدام" class="h-10 w-auto object-contain" />
+            <h2 class="text-lg font-extrabold text-primary dark:text-white tracking-tight">راحتك للاستقدام</h2>
+          </a>
+          <button id="menu-close" class="p-2 rounded-md text-text-light dark:text-text-dark hover:bg-gray-200 dark:hover:bg-gray-700">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <nav class="flex flex-col gap-1 p-4">
+          <a class="block py-3 px-4 rounded-lg text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary dark:hover:text-accent" href="#">الرئيسية</a>
+          <a class="block py-3 px-4 rounded-lg text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary dark:hover:text-accent" href="#about">من نحن</a>
+          <a class="block py-3 px-4 rounded-lg text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary dark:hover:text-accent" href="#services">خدماتنا</a>
+          <a class="block py-3 px-4 rounded-lg text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary dark:hover:text-accent" href="#contact">تواصل معنا</a>
+        </nav>
+        <div class="p-4">
+          <a href="index.html" class="block w-full text-center py-2 mb-3 border-2 border-primary dark:border-white text-primary dark:text-white rounded-lg font-bold hover:bg-primary hover:text-white dark:hover:bg-accent dark:hover:text-primary transition-colors">
+            English
+          </a>
+          <a href="https://wa.me/974700663045" target="_blank" class="block w-full text-center py-3 bg-accent text-primary rounded-lg font-bold shadow-md hover:bg-accent/90 transition-colors">
+            اطلب استقدام الآن
+          </a>
+        </div>
+      </div>
       <main class="flex-grow">
         <section class="relative overflow-hidden">
           <!-- Slideshow Background Images -->
@@ -130,7 +174,7 @@
           </div>
           <!-- Dark Overlay -->
           <div
-            class="absolute inset-0 bg-background-light/80 dark:bg-background-dark/70 z-10"
+            class="absolute inset-0 bg-background-light/40 dark:bg-background-dark/50 z-10"
           ></div>
           <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
@@ -217,6 +261,29 @@
             </div>
           </div>
         </section>
+        <!-- Trust Badges -->
+        <section class="py-12 bg-white dark:bg-background-dark/50 border-y border-gray-200 dark:border-gray-800">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              <div class="flex flex-col items-center gap-3 p-4">
+                <span class="material-symbols-outlined text-3xl text-accent">verified</span>
+                <p class="text-sm font-semibold text-primary dark:text-white">مرخص من وزارة الموارد البشرية</p>
+              </div>
+              <div class="flex flex-col items-center gap-3 p-4">
+                <span class="material-symbols-outlined text-3xl text-accent">workspace_premium</span>
+                <p class="text-sm font-semibold text-primary dark:text-white">سجل تجاري معتمد</p>
+              </div>
+              <div class="flex flex-col items-center gap-3 p-4">
+                <span class="material-symbols-outlined text-3xl text-accent">badge</span>
+                <p class="text-sm font-semibold text-primary dark:text-white">وكالة استقدام رسمية</p>
+              </div>
+              <div class="flex flex-col items-center gap-3 p-4">
+                <span class="material-symbols-outlined text-3xl text-accent">gavel</span>
+                <p class="text-sm font-semibold text-primary dark:text-white">معتمدة من الجهات الحكومية</p>
+              </div>
+            </div>
+          </div>
+        </section>
         <section
           class="py-16 sm:py-24 bg-gradient-to-br from-primary to-[#061A40] text-white"
           id="services"
@@ -293,7 +360,7 @@
               <div class="group relative overflow-hidden rounded-lg shadow-md">
                 <img
                   class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Ethiopia"
+                  alt="Flag of Ethiopia"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDdJ0662FElKTgEk1KXYne7HoM1BwNVbu9ahV54OVjcNlkcNd0W8ABd852lkS1ZQ3LT1Tfj8IAEcXYSHeq78a3eDWmFlK3Kj3GPKU2uR5tn0HFDhH8QSMZqWm0q9cS4CMtiEdMxGYzefvgCHrXQOMlSBKO5qyUKGMCmTe5AEit7GGEXI_4fJtkLLQmep51vdq7h7hPudeUMoUOnWkbn5RWBrsWf53xRSUzXeqz-NHCOKVUYLnQWlUlSLlJoCSGnMkC41ifQp0rN1s"
                 />
                 <div
@@ -304,17 +371,19 @@
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
                 >
-                  <button
+                  <a
+                    href="https://wa.me/974700663045"
+                    target="_blank"
                     class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
                   >
                     ابدأ الآن
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="group relative overflow-hidden rounded-lg shadow-md">
                 <img
                   class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of India"
+                  alt="Flag of India"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzvYjFT1gvKjm00yNDZJLej3sV-Mm6gYpb2VPvvbSJOMzcE1u2LdLSJ4V7nz6NesSUvsQP3hDL4S8OrNPDmHK4UrA835NUDtfac1zMvYfP9V_xC-JrjJ6uLuy17Rq4CKxJ-WeYijRzsToOXDW0TI2ySqElrvyTIHNqcaFk6XNA0ssGn-UiWF3V4ShQhLECu2t8U5uGqlzoTSavqMYCsntvnuf2R_JKiGPAy4kvyeNJecZ_bUOHU8JG3CTMRH4pV_fyPebUpXmj53U"
                 />
                 <div
@@ -325,17 +394,19 @@
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
                 >
-                  <button
+                  <a
+                    href="https://wa.me/974700663045"
+                    target="_blank"
                     class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
                   >
                     ابدأ الآن
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="group relative overflow-hidden rounded-lg shadow-md">
                 <img
                   class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Indonesia"
+                  alt="Flag of Indonesia"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxjtM_Dma6Mwm7E5bPfR81WxT6jlZNxt2ET9FOpF3g2W6Q7s7NFu3ylOFUwXyg9EtWBMISZ1wUR3EmYLTet8-7xLP0MHjFduqN7kl7SnVydXsPdTkPbCimJ7n0RgvX-iTKANiKqSeDTmFCKA_K0gToUzppjlNshtzlOG_E1EEOJmjWMY3yOornIX9bx0Xaf5YDDCkh5Nc322WAtFNN_mRZmOaP-Ac_yCEfbyVyXtdyd3AQ1jciIYkucVnnjtTe-R9vRy0aC3nK1S4"
                 />
                 <div
@@ -346,17 +417,19 @@
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
                 >
-                  <button
+                  <a
+                    href="https://wa.me/974700663045"
+                    target="_blank"
                     class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
                   >
                     ابدأ الآن
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="group relative overflow-hidden rounded-lg shadow-md">
                 <img
                   class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Philippines"
+                  alt="Flag of Philippines"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkn9lXErrdpPLX0PXyRk33vSPoqC67WQDL-Qr4qNoI7FVA7ZCur4yYVuTd6MKwKUAZN5makQm2KCBvuYZvpDh66XcQxW2g-F6Zvzjxy8NRUTygxBuNSZJBIOG8uWmiwgA_9biOKRQkkPrD35n7LO0PJtYiEmwFqGsJLYTNDioAN4B2bYEsFnjqmfWrIY8trU7ylGubcEfzI0zZ4EpoMGb9b9T8ekRCBAb-wQxFhEvhuOwYNmWE3xo49f6LrQMRL5V71EBWxGJwTIM"
                 />
                 <div
@@ -367,17 +440,19 @@
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
                 >
-                  <button
+                  <a
+                    href="https://wa.me/974700663045"
+                    target="_blank"
                     class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
                   >
                     ابدأ الآن
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="group relative overflow-hidden rounded-lg shadow-md">
                 <img
                   class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Uganda"
+                  alt="Flag of Uganda"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVkQ1kqQUiQ7VoyzqGOLvkwFk7V_SWJ-9f42ywzMn0PYYvshhx6QHbPxczpiQRIddgT7bCbjuA8jNxWThV0kF6i0jRgBOauIXwAWwpwO4RzrBTizTnKWs-2U3N3GqjB1j367HGP6zhFZEQLyv_n8MFQ4-urAmxV34PHfFi5BuVJPF_mcUdZisgUAeY__5bFRvkTATw28ZcFUP6zg7M2Ci8G_50NYbkCj2cIjFLK7K7l4PVBO0uD-5UR3X2obv3dR3-LnfKcFR2CEM"
                 />
                 <div
@@ -388,17 +463,19 @@
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
                 >
-                  <button
+                  <a
+                    href="https://wa.me/974700663045"
+                    target="_blank"
                     class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
                   >
                     ابدأ الآن
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="group relative overflow-hidden rounded-lg shadow-md">
                 <img
                   class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Bangladesh"
+                  alt="Flag of Bangladesh"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdCr7oEoMJjUreBEp9aH6Pz78HEC4StZt0daj-m492GHnUpPIaMYY9h3JZ4BMoNk_BE9zipFU0ErcZ5WUWYw3EFwa5eUYa_0dFcSTgNpJRFRGvLf9P-gW8chHuAap0TyZEKKCmnRNggLNwS57k4JzuIW9LW0AINnbzI2mNV86GNXpku3lznmmMAeAearof29MufbC-gDwk-sEOvbMX-L0I80Qz-p4iKo9T4Zxk3H7WBQ1R-_hiblfr7KYoyR5LET3jG6a26OcRnrM"
                 />
                 <div
@@ -409,17 +486,19 @@
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
                 >
-                  <button
+                  <a
+                    href="https://wa.me/974700663045"
+                    target="_blank"
                     class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
                   >
                     ابدأ الآن
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="group relative overflow-hidden rounded-lg shadow-md">
                 <img
                   class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Kenya"
+                  alt="Flag of Kenya"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJpbpbWuzh-neMMSYeOgp16TDqeR1wqWjok8Lq0tNaZSTCmkeG3QY4-VQkzSAdw7qrP-GhHTQBGFtV8F9BXW-VIJXF8vXtiN-uFu7jokLkL32iYYvSOkKAjlykXw4eTcQO3bYgWCGkp00kSLsSah7-Wx4de8cel824n940sZXsJqGAYcV0XirUtKTeGQT0RSW9OuiseRm40SR7ReVAsI2AK40VGhPNxZW1yEnwj_lU-EmKbiyL8r4hjzTTh4b8Nne-TO6BUXHaiec"
                 />
                 <div
@@ -430,17 +509,19 @@
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
                 >
-                  <button
+                  <a
+                    href="https://wa.me/974700663045"
+                    target="_blank"
                     class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
                   >
                     ابدأ الآن
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="group relative overflow-hidden rounded-lg shadow-md">
                 <img
                   class="w-full h-36 object-cover transition-transform duration-300 group-hover:scale-110"
-                  data-alt="Flag of Sri Lanka"
+                  alt="Flag of Sri Lanka"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtGHFYcZVVCYyzWhvC42bBFIMUGFTGDpEwHF7YnvKM8vHVwVC2bSc2htDhpGMIgx8vYnNTFIrM5sKkyrUNKHejTl70OsSXH_PDAOcpgVhMXz53us_vtPrYEWO25dacHnaljBOkCPHCi7jq7vGD6X3tRyhhVtftu78Sb09mHZayyI8JVwh9Mk1A4TYQbj8Dh-M-S8YJmhmfTu-_Wy5TbkDIRkikSTqmzLQAIgk7Z-5a0Gry3LYj1hp3GTJVJmY_kzASHwfPFGP83AE"
                 />
                 <div
@@ -451,11 +532,13 @@
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
                 >
-                  <button
+                  <a
+                    href="https://wa.me/974700663045"
+                    target="_blank"
                     class="text-white font-bold py-2 px-4 rounded-lg border-2 border-accent hover:bg-accent hover:text-primary"
                   >
                     ابدأ الآن
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -478,10 +561,17 @@
                   "أفضل وكالة توظيف عملت معها. وجدوا لنا المرشح المثالي في وقت
                   قياسي. احترافية وكفاءة عالية."
                 </p>
-                <div class="flex items-center mt-6">
+                <div class="flex items-center gap-0.5 mt-3 text-accent">
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                </div>
+                <div class="flex items-center mt-4">
                   <img
                     class="h-12 w-12 rounded-full"
-                    data-alt="Avatar of client Ahmed"
+                    alt="Avatar of client Ahmed"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu5LPmlOXJqV4vsF3wndnjWvhMe4qt9StJrSNiSwVnVgYjBNMAIKa_8VW4jyFZYuFTyqQfLD7y3iiXJggEq_voqZ0j_ICvNcm5E_Xpnlbi2Ni3LcBGYdLYzpREpjZJKJhK4R1CFU-ddMSjINvb9LxD50_SPe8RNWYlWVmI-HtnCNexe3LydhYc2BsZ5p6PmKKYbb4fbAYENwXxFtNVK7CaoEwrncSVg6E_Iwt_FtEzHxmXShOECF5ImurKlEUsOWFN4zKYdUozY-4"
                   />
                   <div class="mr-4">
@@ -499,10 +589,17 @@
                   "عمليتهم سلسة وشفافة للغاية. كان الفريق داعمًا طوال الوقت، مما
                   جعل المهمة التي يمكن أن تكون مرهقة بسيطة جدًا."
                 </p>
-                <div class="flex items-center mt-6">
+                <div class="flex items-center gap-0.5 mt-3 text-accent">
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                </div>
+                <div class="flex items-center mt-4">
                   <img
                     class="h-12 w-12 rounded-full"
-                    data-alt="Avatar of client Fatima"
+                    alt="Avatar of client Fatima"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUWJx14pfOBok6Q_BRezVts4ZoLHbWxYW-phANLBqxGehr6qjmbi-nzhJL6ydzZKKGVZm_znTzz-rJnn2mavgksr-KQefyN8fdrO-46o7tw8c_emYVgogWIhYU9jOd9Fm0RobfMKMLHCkIn8dob-EH-bfIDehk-BOYexTatvNZ44NDGwHll94ScHNoeuaMoquySId9NnUwYjEqOjddSmp9nsFY9I8atxOhj1LChqWpUcXq5LtpeZt1QeNMxSM0msgtufu-pIoFVYA"
                   />
                   <div class="mr-4">
@@ -520,10 +617,17 @@
                   "موثوقون وجديرون بالثقة، ويوفون بوعودهم. أشعر براحة البال وأنا
                   أعلم أن عمالتي المنزلية من مصدر حسن السمعة."
                 </p>
-                <div class="flex items-center mt-6">
+                <div class="flex items-center gap-0.5 mt-3 text-accent">
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                  <span class="material-symbols-outlined text-xl">star</span>
+                </div>
+                <div class="flex items-center mt-4">
                   <img
                     class="h-12 w-12 rounded-full"
-                    data-alt="Avatar of client Omar"
+                    alt="Avatar of client Omar"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBABl7KpUeVpigBZ14-4c9N_ANd4FlDJDOK4lCrexafDrn4UYiHgqq0sHTdZOHmhwespkjA7kZ-9QgdwwlAkvS9HJPBIyKBDMHMKSQ_DhznWqNTUK25JXhxUnLNfTykqfkRtiIRbjQQRh1feViTR_XCzdD5SIZ9f_hAWFKOOQ4HFo-ANje6oCqbSsSdH7-8UblEp8rwgN84kBDDhSfy5S7dpSg9Y5Anwpf69HMff93BIdVMkC9kj9bl227zkyPgA79PtBq4CyhZNI"
                   />
                   <div class="mr-4">
@@ -702,6 +806,65 @@
             </div>
           </div>
         </section>
+        <!-- FAQ -->
+        <section class="py-16 sm:py-24 bg-background-light dark:bg-background-dark">
+          <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-center text-primary dark:text-white text-3xl font-bold tracking-tight">
+              الأسئلة الشائعة
+            </h2>
+            <div class="mt-12 space-y-4">
+              <details class="group p-6 rounded-lg bg-white dark:bg-gray-800/20" open="">
+                <summary class="flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">ما هي عملية الاستقدام؟</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                </summary>
+                <p class="mt-4 text-text-light dark:text-text-dark/80">تتضمن عملية الاستقدام استشارة أولية، ثم البحث والتحقق من المرشحين، المقابلات، وأخيرًا التعيين. نتولى جميع الوثائق والإجراءات القانونية لضمان تجربة سلسة.</p>
+              </details>
+              <details class="group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <summary class="flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">كم يستغرق العثور على مرشح؟</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                </summary>
+                <p class="mt-4 text-text-light dark:text-text-dark/80">يختلف الجدول الزمني حسب متطلبات الدور ودولة المرشح. عادةً يتراوح من 2 إلى 6 أسابيع. نحرص على الكفاءة دون التضحية بالجودة.</p>
+              </details>
+              <details class="group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <summary class="flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">ما هي التكاليف المتضمنة؟</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                </summary>
+                <p class="mt-4 text-text-light dark:text-text-dark/80">نقدم أسعارًا شفافة بدون رسوم خفية. تعتمد التكلفة على نوع الخدمة وجنسية المرشح. يرجى التواصل معنا للحصول على عرض سعر مفصل.</p>
+              </details>
+              <details class="group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <summary class="flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">ما هي المستندات المطلوبة؟</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                </summary>
+                <p class="mt-4 text-text-light dark:text-text-dark/80">ستحتاج إلى نسخة من هويتك أو إقامتك، إثبات العنوان، وأي متطلبات خاصة بنوع العامل المطلوب. سيقوم فريقنا بتوجيهك خلال الاستشارة الأولية.</p>
+              </details>
+              <details class="group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <summary class="flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">هل تقدمون ضمان استبدال؟</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                </summary>
+                <p class="mt-4 text-text-light dark:text-text-dark/80">نعم، نقدم ضمان استبدال خلال الفترة الأولية إذا لم يلبي المرشح المتطلبات المتفق عليها. يتم توضيح الشروط التفصيلية في اتفاقية الخدمة.</p>
+              </details>
+              <details class="group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <summary class="flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">هل يمكنني طلب جنسية محددة؟</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                </summary>
+                <p class="mt-4 text-text-light dark:text-text-dark/80">بالتأكيد. نستقدم من أكثر من 8 دول بما في ذلك إثيوبيا والهند وإندونيسيا والفلبين وأوغندا وبنغلاديش وكينيا وسريلانكا. يمكنك تحديد تفضيلك أثناء الاستشارة.</p>
+              </details>
+              <details class="group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <summary class="flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">ما هي طرق الدفع المقبولة؟</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+                </summary>
+                <p class="mt-4 text-text-light dark:text-text-dark/80">نقبل التحويلات البنكية وطرق الدفع الأخرى الشائعة في المملكة العربية السعودية. سيتم مناقشة خطط الدفع والتفاصيل قبل بدء عملية الاستقدام.</p>
+              </details>
+            </div>
+          </div>
+        </section>
         <section id="contact" class="py-16 sm:py-24 bg-background-light">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -746,10 +909,10 @@
                       >mail</span
                     >
                     <a
-                      href="mailto:splitair34@gmail.com"
+                      href="mailto:contact@recruitmentco.sa"
                       class="hover:underline hover:text-accent"
                     >
-                      splitair34@gmail.com
+                      contact@recruitmentco.sa
                     </a>
                   </p>
                 </div>
@@ -808,7 +971,6 @@
                       href="https://wa.me/974700663045"
                       target="_blank"
                       class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-primary bg-accent hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
-                      type="submit"
                     >
                       أرسل الآن
                     </a>
@@ -838,15 +1000,15 @@
                   >
                 </li>
                 <li>
-                  <a class="text-white/70 hover:text-accent" href="#">من نحن</a>
+                  <a class="text-white/70 hover:text-accent" href="#about">من نحن</a>
                 </li>
                 <li>
-                  <a class="text-white/70 hover:text-accent" href="#"
+                  <a class="text-white/70 hover:text-accent" href="#services"
                     >خدماتنا</a
                   >
                 </li>
                 <li>
-                  <a class="text-white/70 hover:text-accent" href="privacy"
+                  <a class="text-white/70 hover:text-accent" href="privacy.html"
                     >سياسة الخصوصية</a
                   >
                 </li>
@@ -902,13 +1064,75 @@
           <div
             class="mt-8 pt-8 border-t border-white/20 text-center text-sm text-white/70"
           >
-            <p>© 2024 شركة استقدام. جميع الحقوق محفوظة.</p>
+            <p>© 2026 شركة استقدام. جميع الحقوق محفوظة.</p>
           </div>
         </div>
       </footer>
     </div>
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/974700663045"
+      target="_blank"
+      aria-label="Chat on WhatsApp"
+      class="fixed bottom-6 left-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+    >
+      <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.461c-1.926 0-3.801-.519-5.442-1.5l-.391-.233-4.047 1.061 1.08-3.948-.255-.406c-1.077-1.714-1.644-3.702-1.643-5.741 0-5.962 4.851-10.814 10.817-10.814 2.888 0 5.602 1.126 7.644 3.169s3.166 4.757 3.164 7.646c-.003 5.963-4.854 10.816-10.827 10.816M20.52 3.449C18.24 1.168 15.212 0 12.046 0 5.462 0 .108 5.353.106 11.938c0 2.103.548 4.156 1.589 5.96L0 24l6.335-1.662c1.745.952 3.712 1.454 5.706 1.455h.005c6.583 0 11.937-5.354 11.939-11.939.001-3.19-1.24-6.192-3.465-8.405"/>
+      </svg>
+    </a>
+    <!-- Scroll to Top Button -->
+    <button
+      id="scroll-top"
+      aria-label="Scroll to top"
+      class="fixed bottom-24 left-6 z-50 bg-primary dark:bg-accent text-white dark:text-primary w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 pointer-events-none hover:scale-110"
+    >
+      <span class="material-symbols-outlined">keyboard_arrow_up</span>
+    </button>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        const scrollTopBtn = document.getElementById("scroll-top");
+        if (scrollTopBtn) {
+          window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+              scrollTopBtn.classList.remove("opacity-0", "pointer-events-none");
+              scrollTopBtn.classList.add("opacity-100");
+            } else {
+              scrollTopBtn.classList.add("opacity-0", "pointer-events-none");
+              scrollTopBtn.classList.remove("opacity-100");
+            }
+          });
+          scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+
+        const menuToggle = document.getElementById("menu-toggle");
+        const menuClose = document.getElementById("menu-close");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const backdrop = document.getElementById("mobile-menu-backdrop");
+
+        function openMenu() {
+          mobileMenu.classList.remove("-translate-x-full");
+          mobileMenu.classList.add("translate-x-0");
+          backdrop.classList.remove("hidden");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeMenu() {
+          mobileMenu.classList.remove("translate-x-0");
+          mobileMenu.classList.add("-translate-x-full");
+          backdrop.classList.add("hidden");
+          document.body.style.overflow = "";
+        }
+
+        if (menuToggle) menuToggle.addEventListener("click", openMenu);
+        if (menuClose) menuClose.addEventListener("click", closeMenu);
+        if (backdrop) backdrop.addEventListener("click", closeMenu);
+
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+
         const slides = document.querySelectorAll(".hero-slide");
         const dots = document.querySelectorAll(".hero-dot");
         if (!slides.length) return;

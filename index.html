@@ -61,6 +61,98 @@
       section[id] {
         scroll-margin-top: 5rem;
       }
+
+      @keyframes heroText3D {
+        from {
+          opacity: 0;
+          transform: perspective(1000px) rotateX(40deg) translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: perspective(1000px) rotateX(0deg) translateY(0);
+        }
+      }
+      .hero-3d-text {
+        opacity: 0;
+        animation: heroText3D 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+      .hero-3d-text:nth-child(2) { animation-delay: 0.2s; }
+      .hero-3d-text:nth-child(3) { animation-delay: 0.4s; }
+
+      @keyframes float3d1 {
+        0%, 100% { transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg); }
+        25% { transform: translate3d(15px, -20px, 30px) rotateX(90deg) rotateY(45deg); }
+        50% { transform: translate3d(-10px, -35px, 15px) rotateX(180deg) rotateY(90deg); }
+        75% { transform: translate3d(20px, -15px, 25px) rotateX(270deg) rotateY(135deg); }
+      }
+      @keyframes float3d2 {
+        0%, 100% { transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+        33% { transform: translate3d(-25px, -15px, 20px) rotateX(120deg) rotateY(-60deg) rotateZ(30deg); }
+        66% { transform: translate3d(10px, -30px, 40px) rotateX(240deg) rotateY(-120deg) rotateZ(-30deg); }
+      }
+      @keyframes float3d3 {
+        0%, 100% { transform: translate3d(0, 0, 0) rotateY(0deg) scale(1); }
+        50% { transform: translate3d(20px, -25px, 30px) rotateY(180deg) scale(1.1); }
+      }
+      @keyframes float3d4 {
+        0%, 100% { transform: translate3d(0, 0, 0) rotateX(0deg) rotateZ(0deg); }
+        40% { transform: translate3d(-15px, -20px, 25px) rotateX(144deg) rotateZ(90deg); }
+        80% { transform: translate3d(10px, -10px, 15px) rotateX(288deg) rotateZ(180deg); }
+      }
+      .float-3d {
+        position: absolute;
+        transform-style: preserve-3d;
+        pointer-events: none;
+      }
+      .hero-perspective {
+        perspective: 1200px;
+        transform-style: preserve-3d;
+      }
+      .hero-parallax-bg {
+        transition: transform 0.15s ease-out;
+        will-change: transform;
+      }
+      .faq-content {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.35s ease;
+      }
+      .faq-content.open {
+        grid-template-rows: 1fr;
+      }
+      .faq-content > div {
+        overflow: hidden;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes whatsappBounce {
+        0% { transform: scale(0) rotate(-15deg); opacity: 0; }
+        50% { transform: scale(1.15) rotate(5deg); }
+        70% { transform: scale(0.95) rotate(-2deg); }
+        100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      }
+      .whatsapp-enter {
+        animation: whatsappBounce 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.5s both;
+      }
+
+      #mobile-menu-backdrop {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      #mobile-menu-backdrop.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
     </style>
   </head>
   <body
@@ -109,7 +201,7 @@
               <a
                 href="https://wa.me/974700663045"
                 target="_blank"
-                class="min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-accent text-primary text-sm font-bold shadow-md hover:bg-accent/90 transition-colors"
+                class="min-w-[84px] flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-accent text-primary text-sm font-bold shadow-md hover:bg-accent/90 transition-colors text-center"
               >
                 <span class="truncate">Request Recruitment Now</span>
               </a>
@@ -126,7 +218,7 @@
         </div>
       </header>
       <!-- Mobile Menu Drawer -->
-      <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+      <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/50 z-40"></div>
       <div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-background-light dark:bg-background-dark shadow-xl z-50 transform translate-x-full transition-transform duration-300">
         <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
           <a href="#" class="flex items-center gap-3">
@@ -154,9 +246,9 @@
       </div>
       <main class="flex-grow">
         <!-- HeroSection -->
-        <section class="relative overflow-hidden">
+        <section class="hero-perspective relative overflow-hidden">
           <!-- Slideshow Background Images -->
-          <div class="absolute inset-0 z-0">
+          <div class="hero-parallax-bg absolute inset-0 z-0">
             <div
               class="hero-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out opacity-100"
               style="background-image: url('assets/1.png');"
@@ -178,23 +270,30 @@
           <div
             class="absolute inset-0 bg-background-light/40 dark:bg-background-dark/50 z-10"
           ></div>
+          <div class="absolute inset-0 pointer-events-none overflow-hidden" style="z-index:15;">
+            <div class="float-3d w-20 h-20 rounded-full border-2 border-accent/30" style="top:15%; left:10%; animation: float3d1 12s ease-in-out infinite;"></div>
+            <div class="float-3d w-12 h-12 bg-accent/10 rotate-45" style="top:20%; right:15%; animation: float3d2 10s ease-in-out infinite 1s;"></div>
+            <div class="float-3d w-16 h-16 rounded-full bg-primary/10" style="top:60%; left:8%; animation: float3d3 14s ease-in-out infinite 2s;"></div>
+            <div class="float-3d w-10 h-10 border-2 border-primary/20 rotate-12" style="top:70%; right:12%; animation: float3d4 11s ease-in-out infinite 0.5s;"></div>
+            <div class="float-3d w-8 h-8 rounded-full bg-accent/15" style="top:40%; left:85%; animation: float3d1 15s ease-in-out infinite 3s;"></div>
+          </div>
           <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center text-center py-20"
             >
               <div class="flex flex-col gap-6 max-w-3xl">
                 <h1
-                  class="text-primary dark:text-white text-4xl md:text-6xl font-black leading-tight tracking-tighter"
+                  class="hero-3d-text text-primary dark:text-white text-4xl md:text-6xl font-black leading-tight tracking-tighter"
                 >
                   Best Labor Recruitment Services in Saudi Arabia – We Guarantee
                   Quality and Reliability
                 </h1>
                 <h2
-                  class="text-text-light dark:text-text-dark/80 text-lg md:text-xl font-normal leading-normal"
+                  class="hero-3d-text text-text-light dark:text-text-dark/80 text-lg md:text-xl font-normal leading-normal"
                 >
                   Efficient, Fast, and Reliable Labor Recruitment Solutions.
                 </h2>
-                <div class="mt-4">
+                <div class="hero-3d-text mt-4">
                   <a
                     href="https://wa.me/974700663045"
                     target="_blank"
@@ -217,7 +316,7 @@
         <!-- About Us & Stats -->
         <section
           id="about"
-          class="py-16 sm:py-24 bg-background-light dark:bg-background-dark"
+          class="reveal py-16 sm:py-24 bg-background-light dark:bg-background-dark"
         >
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -237,26 +336,29 @@
               </div>
               <div class="flex flex-wrap gap-4 justify-center">
                 <div
-                  class="flex min-w-[180px] flex-1 flex-col gap-2 rounded-lg p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/20 text-center"
+                  class="flex min-w-[180px] flex-1 flex-col items-center gap-2 rounded-lg p-6 border border-gray-200 border-t-4 border-t-accent dark:border-gray-700 dark:border-t-accent bg-white dark:bg-gray-800/20 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
-                  <p class="text-primary dark:text-accent text-4xl font-bold">
-                    +500
+                  <span class="text-2xl">👥</span>
+                  <p class="counter text-primary dark:text-accent text-4xl font-bold" data-count="500" data-prefix="+">
+                    +0
                   </p>
                   <p class="text-base font-medium">Happy Clients</p>
                 </div>
                 <div
-                  class="flex min-w-[180px] flex-1 flex-col gap-2 rounded-lg p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/20 text-center"
+                  class="flex min-w-[180px] flex-1 flex-col items-center gap-2 rounded-lg p-6 border border-gray-200 border-t-4 border-t-accent dark:border-gray-700 dark:border-t-accent bg-white dark:bg-gray-800/20 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
-                  <p class="text-primary dark:text-accent text-4xl font-bold">
-                    8+
+                  <span class="text-2xl">🌍</span>
+                  <p class="counter text-primary dark:text-accent text-4xl font-bold" data-count="8" data-suffix="+">
+                    0+
                   </p>
                   <p class="text-base font-medium">Countries Served</p>
                 </div>
                 <div
-                  class="flex min-w-[180px] flex-1 flex-col gap-2 rounded-lg p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/20 text-center"
+                  class="flex min-w-[180px] flex-1 flex-col items-center gap-2 rounded-lg p-6 border border-gray-200 border-t-4 border-t-accent dark:border-gray-700 dark:border-t-accent bg-white dark:bg-gray-800/20 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
-                  <p class="text-primary dark:text-accent text-4xl font-bold">
-                    10+
+                  <span class="text-2xl">🏆</span>
+                  <p class="counter text-primary dark:text-accent text-4xl font-bold" data-count="10" data-suffix="+">
+                    0+
                   </p>
                   <p class="text-base font-medium">Years of Experience</p>
                 </div>
@@ -265,30 +367,30 @@
           </div>
         </section>
         <!-- Trust Badges -->
-        <section class="py-12 bg-white dark:bg-background-dark/50 border-y border-gray-200 dark:border-gray-800">
+        <section class="reveal py-12 bg-white dark:bg-background-dark/50 border-y border-gray-200 dark:border-gray-800">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div class="flex flex-col items-center gap-3 p-4">
-                <span class="material-symbols-outlined text-3xl text-accent">verified</span>
+              <div class="group flex flex-col items-center gap-3 p-4">
+                <span class="material-symbols-outlined text-3xl text-accent transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">verified</span>
                 <p class="text-sm font-semibold text-primary dark:text-white">Licensed by Ministry of HR</p>
               </div>
-              <div class="flex flex-col items-center gap-3 p-4">
-                <span class="material-symbols-outlined text-3xl text-accent">workspace_premium</span>
+              <div class="group flex flex-col items-center gap-3 p-4">
+                <span class="material-symbols-outlined text-3xl text-accent transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">workspace_premium</span>
                 <p class="text-sm font-semibold text-primary dark:text-white">Commercial Registration</p>
               </div>
-              <div class="flex flex-col items-center gap-3 p-4">
-                <span class="material-symbols-outlined text-3xl text-accent">badge</span>
+              <div class="group flex flex-col items-center gap-3 p-4">
+                <span class="material-symbols-outlined text-3xl text-accent transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">badge</span>
                 <p class="text-sm font-semibold text-primary dark:text-white">Official Recruitment Agency</p>
               </div>
-              <div class="flex flex-col items-center gap-3 p-4">
-                <span class="material-symbols-outlined text-3xl text-accent">gavel</span>
+              <div class="group flex flex-col items-center gap-3 p-4">
+                <span class="material-symbols-outlined text-3xl text-accent transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">gavel</span>
                 <p class="text-sm font-semibold text-primary dark:text-white">Government Approved</p>
               </div>
             </div>
           </div>
         </section>
         <!-- Why Choose Us -->
-        <section class="py-16 sm:py-24 bg-white dark:bg-background-dark/50">
+        <section class="reveal py-16 sm:py-24 bg-white dark:bg-background-dark/50">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2
               class="text-primary dark:text-white text-3xl font-bold tracking-tight"
@@ -303,10 +405,10 @@
             </p>
             <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
               <div
-                class="flex flex-col items-center gap-4 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm"
+                class="group flex flex-col items-center gap-4 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-accent/50 transition-all duration-300"
               >
                 <div class="bg-accent/10 p-4 rounded-full">
-                  <span class="material-symbols-outlined text-4xl text-accent"
+                  <span class="material-symbols-outlined text-4xl text-accent transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1"
                     >verified_user</span
                   >
                 </div>
@@ -319,10 +421,10 @@
                 </p>
               </div>
               <div
-                class="flex flex-col items-center gap-4 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm"
+                class="group flex flex-col items-center gap-4 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-accent/50 transition-all duration-300"
               >
                 <div class="bg-accent/10 p-4 rounded-full">
-                  <span class="material-symbols-outlined text-4xl text-accent"
+                  <span class="material-symbols-outlined text-4xl text-accent transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1"
                     >handshake</span
                   >
                 </div>
@@ -335,10 +437,10 @@
                 </p>
               </div>
               <div
-                class="flex flex-col items-center gap-4 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm"
+                class="group flex flex-col items-center gap-4 p-8 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-accent/50 transition-all duration-300"
               >
                 <div class="bg-accent/10 p-4 rounded-full">
-                  <span class="material-symbols-outlined text-4xl text-accent"
+                  <span class="material-symbols-outlined text-4xl text-accent transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1"
                     >payments</span
                   >
                 </div>
@@ -353,10 +455,11 @@
             </div>
           </div>
         </section>
+        <div class="h-16 bg-gradient-to-b from-background-light to-primary dark:from-background-dark dark:to-[#061A40]"></div>
         <!-- Benefits -->
         <section
           id="services"
-          class="py-16 sm:py-24 bg-gradient-to-br from-primary to-[#061A40] text-white"
+          class="reveal py-16 sm:py-24 bg-gradient-to-br from-primary to-[#061A40] text-white"
         >
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold tracking-tight">
@@ -370,36 +473,36 @@
               class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
             >
               <div
-                class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
+                class="group flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
               >
-                <span class="material-symbols-outlined text-5xl text-accent"
+                <span class="material-symbols-outlined text-5xl text-accent transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6"
                   >schedule</span
                 >
                 <h3 class="mt-4 text-xl font-bold">Time &amp; Effort Saving</h3>
                 <p class="mt-2 text-white/70 text-sm">We handle the entire recruitment process so you can focus on what matters.</p>
               </div>
               <div
-                class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
+                class="group flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
               >
-                <span class="material-symbols-outlined text-5xl text-accent"
+                <span class="material-symbols-outlined text-5xl text-accent transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6"
                   >health_and_safety</span
                 >
                 <h3 class="mt-4 text-xl font-bold">Peace of Mind</h3>
                 <p class="mt-2 text-white/70 text-sm">Every candidate is thoroughly vetted for reliability and professionalism.</p>
               </div>
               <div
-                class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
+                class="group flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
               >
-                <span class="material-symbols-outlined text-5xl text-accent"
+                <span class="material-symbols-outlined text-5xl text-accent transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6"
                   >cottage</span
                 >
                 <h3 class="mt-4 text-xl font-bold">Household Support</h3>
                 <p class="mt-2 text-white/70 text-sm">Specialized domestic workers trained for household management and care.</p>
               </div>
               <div
-                class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
+                class="group flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm"
               >
-                <span class="material-symbols-outlined text-5xl text-accent"
+                <span class="material-symbols-outlined text-5xl text-accent transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6"
                   >trending_up</span
                 >
                 <h3 class="mt-4 text-xl font-bold">Improved Productivity</h3>
@@ -410,7 +513,7 @@
         </section>
         <!-- Recruitment Countries -->
         <section
-          class="py-16 sm:py-24 bg-background-light dark:bg-background-dark"
+          class="reveal py-16 sm:py-24 bg-background-light dark:bg-background-dark"
         >
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2
@@ -437,6 +540,7 @@
                   class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
                 >
                   <h3 class="text-white text-lg font-bold">Ethiopia</h3>
+                  <a href="https://wa.me/974700663045" target="_blank" class="md:hidden mt-2 bg-accent text-white text-xs font-bold py-1.5 px-3 rounded-full hover:bg-accent-700 transition">Start Now</a>
                 </div>
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
@@ -460,6 +564,7 @@
                   class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
                 >
                   <h3 class="text-white text-lg font-bold">India</h3>
+                  <a href="https://wa.me/974700663045" target="_blank" class="md:hidden mt-2 bg-accent text-white text-xs font-bold py-1.5 px-3 rounded-full hover:bg-accent-700 transition">Start Now</a>
                 </div>
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
@@ -483,6 +588,7 @@
                   class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
                 >
                   <h3 class="text-white text-lg font-bold">Indonesia</h3>
+                  <a href="https://wa.me/974700663045" target="_blank" class="md:hidden mt-2 bg-accent text-white text-xs font-bold py-1.5 px-3 rounded-full hover:bg-accent-700 transition">Start Now</a>
                 </div>
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
@@ -506,6 +612,7 @@
                   class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
                 >
                   <h3 class="text-white text-lg font-bold">Philippines</h3>
+                  <a href="https://wa.me/974700663045" target="_blank" class="md:hidden mt-2 bg-accent text-white text-xs font-bold py-1.5 px-3 rounded-full hover:bg-accent-700 transition">Start Now</a>
                 </div>
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
@@ -529,6 +636,7 @@
                   class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
                 >
                   <h3 class="text-white text-lg font-bold">Uganda</h3>
+                  <a href="https://wa.me/974700663045" target="_blank" class="md:hidden mt-2 bg-accent text-white text-xs font-bold py-1.5 px-3 rounded-full hover:bg-accent-700 transition">Start Now</a>
                 </div>
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
@@ -552,6 +660,7 @@
                   class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
                 >
                   <h3 class="text-white text-lg font-bold">Bangladesh</h3>
+                  <a href="https://wa.me/974700663045" target="_blank" class="md:hidden mt-2 bg-accent text-white text-xs font-bold py-1.5 px-3 rounded-full hover:bg-accent-700 transition">Start Now</a>
                 </div>
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
@@ -575,6 +684,7 @@
                   class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
                 >
                   <h3 class="text-white text-lg font-bold">Kenya</h3>
+                  <a href="https://wa.me/974700663045" target="_blank" class="md:hidden mt-2 bg-accent text-white text-xs font-bold py-1.5 px-3 rounded-full hover:bg-accent-700 transition">Start Now</a>
                 </div>
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
@@ -598,6 +708,7 @@
                   class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4"
                 >
                   <h3 class="text-white text-lg font-bold">Sri Lanka</h3>
+                  <a href="https://wa.me/974700663045" target="_blank" class="md:hidden mt-2 bg-accent text-white text-xs font-bold py-1.5 px-3 rounded-full hover:bg-accent-700 transition">Start Now</a>
                 </div>
                 <div
                   class="absolute inset-0 bg-primary/90 hidden group-hover-block items-center justify-center transition-all duration-300"
@@ -615,7 +726,7 @@
           </div>
         </section>
         <!-- Testimonials -->
-        <section class="py-16 sm:py-24 bg-white dark:bg-background-dark/50">
+        <section class="reveal py-16 sm:py-24 bg-white dark:bg-background-dark/50">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2
               class="text-primary dark:text-white text-3xl font-bold tracking-tight"
@@ -626,9 +737,10 @@
               class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
               <div
-                class="p-8 bg-background-light dark:bg-background-dark rounded-lg shadow-sm text-left"
+                class="relative p-8 bg-background-light dark:bg-background-dark rounded-lg shadow-sm text-left border-l-4 border-accent hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
-                <p class="text-text-light dark:text-text-dark/80">
+                <span class="material-symbols-outlined text-5xl text-accent/20 absolute top-4 right-4">format_quote</span>
+                <p class="text-text-light dark:text-text-dark/80 relative z-10">
                   "The best recruitment agency I've worked with. They found us
                   the perfect candidate in record time. Highly professional and
                   efficient."
@@ -655,12 +767,13 @@
                 </div>
               </div>
               <div
-                class="p-8 bg-background-light dark:bg-background-dark rounded-lg shadow-sm text-left"
+                class="relative p-8 bg-background-light dark:bg-background-dark rounded-lg shadow-sm text-left border-l-4 border-accent hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
-                <p class="text-text-light dark:text-text-dark/80">
-                  "Their process is so smooth and transparent. The team was
-                  supportive throughout, making what could be a stressful task
-                  very simple."
+                <span class="material-symbols-outlined text-5xl text-accent/20 absolute top-4 right-4">format_quote</span>
+                <p class="text-text-light dark:text-text-dark/80 relative z-10">
+                  "Exceptional service from start to finish. They understood our
+                  requirements perfectly and delivered outstanding candidates
+                  from Ethiopia."
                 </p>
                 <div class="flex items-center gap-0.5 mt-3 text-accent">
                   <span class="material-symbols-outlined text-xl">star</span>
@@ -684,12 +797,13 @@
                 </div>
               </div>
               <div
-                class="p-8 bg-background-light dark:bg-background-dark rounded-lg shadow-sm text-left"
+                class="relative p-8 bg-background-light dark:bg-background-dark rounded-lg shadow-sm text-left border-l-4 border-accent hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
-                <p class="text-text-light dark:text-text-dark/80">
-                  "Reliable, trustworthy, and they deliver on their promises. I
-                  have peace of mind knowing my household staff is from a
-                  reputable source."
+                <span class="material-symbols-outlined text-5xl text-accent/20 absolute top-4 right-4">format_quote</span>
+                <p class="text-text-light dark:text-text-dark/80 relative z-10">
+                  "Professional, reliable, and efficient. They helped us hire
+                  top-tier staff for our hospital. Excellent follow-up and
+                  support throughout the process."
                 </p>
                 <div class="flex items-center gap-0.5 mt-3 text-accent">
                   <span class="material-symbols-outlined text-xl">star</span>
@@ -717,7 +831,7 @@
         </section>
         <!-- FAQ -->
         <section
-          class="py-16 sm:py-24 bg-background-light dark:bg-background-dark"
+          class="reveal py-16 sm:py-24 bg-background-light dark:bg-background-dark"
         >
           <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2
@@ -726,161 +840,104 @@
               Frequently Asked Questions
             </h2>
             <div class="mt-12 space-y-4">
-              <details
-                class="group p-6 rounded-lg bg-white dark:bg-gray-800/20"
-                open=""
-              >
-                <summary
-                  class="flex items-center justify-between cursor-pointer"
-                >
-                  <h3 class="font-medium text-lg text-primary dark:text-white">
-                    What is the recruitment process?
-                  </h3>
-                  <span
-                    class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180"
-                    >expand_more</span
-                  >
-                </summary>
-                <p class="mt-4 text-text-light dark:text-text-dark/80">
-                  Our process involves an initial consultation, candidate
-                  sourcing and screening, interviews, and final placement. We
-                  handle all documentation and legalities for a seamless
-                  experience.
-                </p>
-              </details>
-              <details
-                class="group p-6 rounded-lg bg-white dark:bg-gray-800/20"
-              >
-                <summary
-                  class="flex items-center justify-between cursor-pointer"
-                >
-                  <h3 class="font-medium text-lg text-primary dark:text-white">
-                    How long does it take to find a candidate?
-                  </h3>
-                  <span
-                    class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180"
-                    >expand_more</span
-                  >
-                </summary>
-                <p class="mt-4 text-text-light dark:text-text-dark/80">
-                  The timeline can vary depending on the role's specific
-                  requirements and the country of origin. Typically, it ranges
-                  from 2 to 6 weeks. We prioritize efficiency without
-                  compromising on quality.
-                </p>
-              </details>
-              <details
-                class="group p-6 rounded-lg bg-white dark:bg-gray-800/20"
-              >
-                <summary
-                  class="flex items-center justify-between cursor-pointer"
-                >
-                  <h3 class="font-medium text-lg text-primary dark:text-white">
-                    What are the costs involved?
-                  </h3>
-                  <span
-                    class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180"
-                    >expand_more</span
-                  >
-                </summary>
-                <p class="mt-4 text-text-light dark:text-text-dark/80">
-                  We offer transparent pricing with no hidden fees. The cost
-                  depends on the type of service and the candidate's
-                  nationality. Please contact us for a detailed quote tailored
-                  to your needs.
-                </p>
-              </details>
-              <details
-                class="group p-6 rounded-lg bg-white dark:bg-gray-800/20"
-              >
-                <summary
-                  class="flex items-center justify-between cursor-pointer"
-                >
-                  <h3 class="font-medium text-lg text-primary dark:text-white">
-                    What documents do I need to provide?
-                  </h3>
-                  <span
-                    class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180"
-                    >expand_more</span
-                  >
-                </summary>
-                <p class="mt-4 text-text-light dark:text-text-dark/80">
-                  You will need a copy of your ID or Iqama, proof of address,
-                  and any specific requirements for the type of worker you need.
-                  Our team will guide you through the exact documents during the
-                  initial consultation.
-                </p>
-              </details>
-              <details
-                class="group p-6 rounded-lg bg-white dark:bg-gray-800/20"
-              >
-                <summary
-                  class="flex items-center justify-between cursor-pointer"
-                >
-                  <h3 class="font-medium text-lg text-primary dark:text-white">
-                    Do you offer replacement guarantees?
-                  </h3>
-                  <span
-                    class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180"
-                    >expand_more</span
-                  >
-                </summary>
-                <p class="mt-4 text-text-light dark:text-text-dark/80">
-                  Yes, we offer a replacement guarantee within the initial
-                  period if the candidate does not meet the agreed-upon
-                  requirements. Specific terms are outlined in your service
-                  agreement.
-                </p>
-              </details>
-              <details
-                class="group p-6 rounded-lg bg-white dark:bg-gray-800/20"
-              >
-                <summary
-                  class="flex items-center justify-between cursor-pointer"
-                >
-                  <h3 class="font-medium text-lg text-primary dark:text-white">
-                    Can I request a specific nationality?
-                  </h3>
-                  <span
-                    class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180"
-                    >expand_more</span
-                  >
-                </summary>
-                <p class="mt-4 text-text-light dark:text-text-dark/80">
-                  Absolutely. We recruit from over 8 countries including
-                  Ethiopia, India, Indonesia, Philippines, Uganda, Bangladesh,
-                  Kenya, and Sri Lanka. You can specify your preference during
-                  the consultation.
-                </p>
-              </details>
-              <details
-                class="group p-6 rounded-lg bg-white dark:bg-gray-800/20"
-              >
-                <summary
-                  class="flex items-center justify-between cursor-pointer"
-                >
-                  <h3 class="font-medium text-lg text-primary dark:text-white">
-                    What payment methods do you accept?
-                  </h3>
-                  <span
-                    class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180"
-                    >expand_more</span
-                  >
-                </summary>
-                <p class="mt-4 text-text-light dark:text-text-dark/80">
-                  We accept bank transfers and other standard payment methods
-                  common in Saudi Arabia. Payment plans and details will be
-                  discussed and agreed upon before starting the recruitment
-                  process.
-                </p>
-              </details>
+              <div class="faq-item group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <button class="faq-toggle w-full flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">What is the recruitment process?</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                </button>
+                <div class="faq-content">
+                  <div>
+                    <p class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark/80">
+                      Our process involves an initial consultation, candidate sourcing and screening, interviews, and final placement. We handle all documentation and legalities for a seamless experience.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="faq-item group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <button class="faq-toggle w-full flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">How long does it take to find a candidate?</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                </button>
+                <div class="faq-content">
+                  <div>
+                    <p class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark/80">
+                      The timeline can vary depending on the role's specific requirements and the country of origin. Typically, it ranges from 2 to 6 weeks. We prioritize efficiency without compromising on quality.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="faq-item group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <button class="faq-toggle w-full flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">What are the costs involved?</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                </button>
+                <div class="faq-content">
+                  <div>
+                    <p class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark/80">
+                      We offer transparent pricing with no hidden fees. The cost depends on the type of service and the candidate's nationality. Please contact us for a detailed quote tailored to your needs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="faq-item group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <button class="faq-toggle w-full flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">What documents do I need to provide?</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                </button>
+                <div class="faq-content">
+                  <div>
+                    <p class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark/80">
+                      You will need a copy of your ID or Iqama, proof of address, and any specific requirements for the type of worker you need. Our team will guide you through the exact documents during the initial consultation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="faq-item group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <button class="faq-toggle w-full flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">Do you offer replacement guarantees?</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                </button>
+                <div class="faq-content">
+                  <div>
+                    <p class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark/80">
+                      Yes, we offer a replacement guarantee within the initial period if the candidate does not meet the agreed-upon requirements. Specific terms are outlined in your service agreement.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="faq-item group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <button class="faq-toggle w-full flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">Can I request a specific nationality?</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                </button>
+                <div class="faq-content">
+                  <div>
+                    <p class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark/80">
+                      Absolutely. We recruit from over 8 countries including Ethiopia, India, Indonesia, Philippines, Uganda, Bangladesh, Kenya, and Sri Lanka. You can specify your preference during the consultation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="faq-item group p-6 rounded-lg bg-white dark:bg-gray-800/20">
+                <button class="faq-toggle w-full flex items-center justify-between cursor-pointer">
+                  <h3 class="font-medium text-lg text-primary dark:text-white">What payment methods do you accept?</h3>
+                  <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                </button>
+                <div class="faq-content">
+                  <div>
+                    <p class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark/80">
+                      We accept bank transfers and other standard payment methods common in Saudi Arabia. Payment plans and details will be discussed and agreed upon before starting the recruitment process.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
         <!-- Contact Us -->
         <section
           id="contact"
-          class="py-16 sm:py-24 bg-white dark:bg-background-dark/50"
+          class="reveal py-16 sm:py-24 bg-white dark:bg-background-dark/50"
         >
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -896,8 +953,8 @@
                   needs.
                 </p>
                 <div class="mt-8 space-y-4">
-                  <p class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-accent"
+                  <p class="group flex items-center gap-3">
+                    <span class="material-symbols-outlined text-accent transition-transform duration-300 group-hover:translate-x-1"
                       >location_on</span
                     >
                     Riyadh, Saudi Arabia
@@ -916,8 +973,8 @@
                       <span>+974 700663045</span>
                     </a>
                   </p>
-                  <p class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-accent"
+                  <p class="group flex items-center gap-3">
+                    <span class="material-symbols-outlined text-accent transition-transform duration-300 group-hover:translate-x-1"
                       >mail</span
                     >
                     contact@recruitmentco.sa
@@ -1002,7 +1059,7 @@
               <h3 class="text-lg font-bold">Quick Links</h3>
               <ul class="mt-4 space-y-2 text-sm">
                 <li>
-                  <a class="text-white/70 hover:text-accent" href="#">Home</a>
+                  <a class="text-white/70 hover:text-accent" href="index.html">Home</a>
                 </li>
                 <li>
                   <a class="text-white/70 hover:text-accent" href="#about"
@@ -1029,7 +1086,6 @@
             <div>
               <h3 class="text-lg font-bold">Follow Us</h3>
               <div class="flex mt-4 space-x-4">
-                <!-- SVG icons for social media can be placed here -->
                 <a class="text-white/70 hover:text-accent" href="https://www.facebook.com/share/1DH7fwUUbo/">
                   <svg
                     aria-hidden="true"
@@ -1041,18 +1097,6 @@
                       clip-rule="evenodd"
                       d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
                       fill-rule="evenodd"
-                    ></path>
-                  </svg>
-                </a>
-                <a class="text-white/70 hover:text-accent" href="#">
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="currentColor"
-                    viewbox="0 0 24 24"
-                  >
-                    <path
-                      d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
                     ></path>
                   </svg>
                 </a>
@@ -1087,7 +1131,7 @@
       href="https://wa.me/974700663045"
       target="_blank"
       aria-label="Chat on WhatsApp"
-      class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+      class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 whatsapp-enter"
     >
       <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.461c-1.926 0-3.801-.519-5.442-1.5l-.391-.233-4.047 1.061 1.08-3.948-.255-.406c-1.077-1.714-1.644-3.702-1.643-5.741 0-5.962 4.851-10.814 10.817-10.814 2.888 0 5.602 1.126 7.644 3.169s3.166 4.757 3.164 7.646c-.003 5.963-4.854 10.816-10.827 10.816M20.52 3.449C18.24 1.168 15.212 0 12.046 0 5.462 0 .108 5.353.106 11.938c0 2.103.548 4.156 1.589 5.96L0 24l6.335-1.662c1.745.952 3.712 1.454 5.706 1.455h.005c6.583 0 11.937-5.354 11.939-11.939.001-3.19-1.24-6.192-3.465-8.405"/>
@@ -1126,13 +1170,13 @@
 
         function openMenu() {
           mobileMenu.classList.remove("translate-x-full");
-          backdrop.classList.remove("hidden");
+          backdrop.classList.add("active");
           document.body.style.overflow = "hidden";
         }
 
         function closeMenu() {
           mobileMenu.classList.add("translate-x-full");
-          backdrop.classList.add("hidden");
+          backdrop.classList.remove("active");
           document.body.style.overflow = "";
         }
 
@@ -1183,6 +1227,75 @@
             }, intervalTime);
           });
         });
+
+        const heroSection = document.querySelector('section.hero-perspective');
+        const heroBg = document.querySelector('.hero-parallax-bg');
+        if (heroSection && heroBg) {
+          heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            heroBg.style.transform = `rotateX(${y * -5}deg) rotateY(${x * 5}deg) scale(1.05)`;
+          });
+          heroSection.addEventListener('mouseleave', () => {
+            heroBg.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1.05)';
+          });
+        }
+
+        const counters = document.querySelectorAll('.counter');
+        if (counters.length) {
+          const animateCounter = (el) => {
+            const target = parseInt(el.getAttribute('data-count'));
+            const prefix = el.getAttribute('data-prefix') || '';
+            const suffix = el.getAttribute('data-suffix') || '';
+            const duration = 2000;
+            const start = performance.now();
+            const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+            const step = (now) => {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const current = Math.round(easeOut(progress) * target);
+              el.textContent = prefix + current + suffix;
+              if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          };
+          const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.5 });
+          counters.forEach((c) => counterObserver.observe(c));
+        }
+
+        document.querySelectorAll('.faq-toggle').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const content = btn.parentElement.querySelector('.faq-content');
+            const icon = btn.querySelector('.material-symbols-outlined');
+            const isOpen = content.classList.contains('open');
+            document.querySelectorAll('.faq-content.open').forEach((c) => {
+              if (c !== content) {
+                c.classList.remove('open');
+                c.closest('.faq-item').querySelector('.material-symbols-outlined').classList.remove('rotate-180');
+              }
+            });
+            content.classList.toggle('open', !isOpen);
+            icon.classList.toggle('rotate-180', !isOpen);
+          });
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
       });
     </script>
   </body>
